@@ -1,4 +1,4 @@
-package sortering;
+package opgave1_2_3;
 
 public class SelectionSort {
     private static void swap(int[] list, int i, int j) {
