@@ -16,4 +16,17 @@ public class BubbelSortering {
 		}
 	}
 
+	public static String[] bubbleSortof(String[] names) {
+		for (int i = names.length - 1; i > 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (names[j].compareTo(names[j + 1]) > 0) {
+					String aNameSwap = names[j];
+					names[j] = names[j + 1];
+					names[j + 1] = aNameSwap;
+				}
+			}
+		}
+
+		return names;
+	}
 }

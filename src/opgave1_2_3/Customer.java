@@ -1,38 +1,60 @@
 package opgave1_2_3;
 
 public class Customer implements Comparable<Customer> {
-	private String lastName;
-	private String firstName;
-	private int age;
-	
-	public Customer(String lastName, String firstName, int age) {
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.age = age;
-	}
-	
-	@Override
-    public int compareTo(Customer customer) {
-		if (lastName.equals(customer.getLastName()))
-			return firstName.compareTo(customer.getFirstName());
-		else 
-			return lastName.compareTo(customer.getLastName());
+	private String name;
+	private String efternavn;
+	private int alder;
+
+	public Customer(String aName, String aLastName, int anAge) {
+		setName(aName);
+		setEfternavn(aLastName);
+		setAlder(anAge);
 	}
 
-	public int getAge() {
-		return age;
+	public String getName() {
+		return name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	public String getFirstName() {
-		return firstName;
+
+	public String getEfternavn() {
+		return efternavn;
 	}
-	
+
+	public void setEfternavn(String efternavn) {
+		this.efternavn = efternavn;
+	}
+
+	public int getAlder() {
+		return alder;
+	}
+
+	public void setAlder(int alder) {
+		this.alder = alder;
+	}
+
 	@Override
-    public String toString(){
-		return lastName + " " + firstName + " " + age;
+	public int compareTo(Customer o) {
+		int compareStatus = this.efternavn.compareToIgnoreCase(o.getEfternavn());
+
+		if (compareStatus == 0) {
+			compareStatus = this.name.compareToIgnoreCase(o.getName());
+
+			if (compareStatus == 0) {
+				compareStatus = this.alder - o.getAlder();
+			}
+		}
+
+		return compareStatus;
+	}
+
+	@Override
+	public String toString() {
+		// String toString = "Name is " + name + " " + this.efternavn + ", ";
+		// toString += "age is " + this.alder;
+		String toString = name + " " + efternavn;
+		return toString;
 	}
 }
